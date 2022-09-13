@@ -17,3 +17,8 @@ Por pouco não cheguei aos 100% do back, devido a falta de tempo mesmo, recebi o
 
 # Estrutura do projeto & tomadas de decisão
 Montei o back-end o mais simples possível pois ainda teria o front inteiro para fazer, escolhi novamente as tecnologias da suflex (Graphql e Prisma) e para agilizar ainda mais utilizei a lib TypeGraphQl para integrar com o TypeScript e gerar o schema.graphql fazendo com que minha responsabilidade fosse construir os resolvers (controllers). Busquei por fazer uma organização semi-solid para demonstrar que mesmo um pequeno projeto pode ser escalável, simples e de fácil manutenção.
+
+#Features finalizadas 
+- Login
+- Cadastro
+- Prisma Schema já com os relacionamento
