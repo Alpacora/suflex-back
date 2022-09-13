@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id() @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+
+  favorites Character[]
+
+  @@map("users")
+}
+
+model Character {
+  id         Int       @id
+  name       String
+  status     String
+  species    String
+  type       String
+  gender     String
+  originId   String
+  origin     Origin    @relation(fields: [originId], references: [id])
+  locationId String?
+  Location   Location? @relation(fields: [locationId], references: [id])
+  image      String
+  episode    String
+  url        String
+  created    DateTime
+
+  users User[]
+
+  @@map("characters")
+}
+
+model Origin {
+  id        String      @id @default(cuid())
+  name      String
+  url       String
+  Character Character[]
+
+  @@map("origins")
+}
+
+model Location {
+  id        String      @id @default(cuid())
+  name      String
+  url       String
+  Character Character[]
+
+  @@map("locations")
+}
+
+model Url {
+  id  String @id @default(cuid())
+  url String
+
+  @@map("urls")
+}
